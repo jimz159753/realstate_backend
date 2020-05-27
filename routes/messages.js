@@ -5,7 +5,7 @@ const verifyToken = require('../helpers');
 const bcrypt = require('bcrypt');
 require('dotenv/config');
 
-router.get('/', verifyToken, async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const messages = await Message.find();
         res.json(messages)
@@ -15,9 +15,6 @@ router.get('/', verifyToken, async (req, res) => {
 });
 
 router.post('/add', async (req, res) => {
-    console.log('entro')
-    console.log(req.body)
-
     try {
         const messages = Message({
             ...req.body
